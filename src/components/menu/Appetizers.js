@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 
 export const Appetizers = () => {
     const [appetizers, setApps] = useState([])
+    const slicedApps = appetizers.slice(1)
+    
 
     useEffect(
         () => {
@@ -15,10 +17,14 @@ export const Appetizers = () => {
         []
     )
 
+
+
     return (
         <>
+            
             {
-                appetizers.map(
+                
+                slicedApps.map(
                     (app) => {
                         return <p key={`app--${app.id}`}>{app.name}</p>
                     }

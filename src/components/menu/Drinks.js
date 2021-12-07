@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 
 export const Drinks = () => {
     const [drinks, setDrinks] = useState([])
+    const slicedDrinks = drinks.slice(1)
 
     useEffect(
         () => {
@@ -18,7 +19,7 @@ export const Drinks = () => {
     return (
         <>
             {
-                drinks.map(
+                slicedDrinks.map(
                     (drink) => {
                         return <p key={`drink--${drink.id}`}>{drink.name}</p>
                     }
