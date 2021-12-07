@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Capstone from './Capstone';
+import { Capstone } from './components/Capstone';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Capstone />
+    <BrowserRouter>
+      <Capstone/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
