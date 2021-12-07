@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 
 export const Entrees = () => {
     const [entrees, setEntrees] = useState([])
+    const slicedEntrees = entrees.slice(1)
 
     useEffect(
         () => {
@@ -18,7 +19,7 @@ export const Entrees = () => {
     return (
         <>
             {
-                entrees.map(
+                slicedEntrees.map(
                     (entree) => {
                         return <p key={`entree--${entree.id}`}>{entree.name}</p>
                     }
