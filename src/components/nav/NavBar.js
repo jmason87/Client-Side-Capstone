@@ -1,8 +1,23 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
 
 export const NavBar = (props) => {
+    const [users, setUsers] =useState([])
+    const userId = localStorage.getItem("pub_user")
+
+    useEffect(
+        () => {
+            fetch(`http://localhost:8088/users?id=${userId}`)
+            .then(res => res.json())
+            .then((data) => {
+                setUsers(data)
+            })
+      
+        },
+        []
+    )
+
     return (
 
         <ul className="navbar">
@@ -27,8 +42,13 @@ export const NavBar = (props) => {
                     () => {
                         localStorage.removeItem("pub_user")
                     }
-                }>
-                    Logout</Link>
+                }>  
+                    {
+                        users.map((user) => {
+                            return `Logout ${user.name}`
+                        })
+                    }
+                    </Link>
             </li>
         </ul>
 
