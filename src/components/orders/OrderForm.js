@@ -18,6 +18,7 @@ export const OrderForm = () => {
 
     const submitNewOrder = (evt) => {
         evt.preventDefault()
+        const date = new Date
         const newOrder = {
             locationId: parseInt(order.locationId),
             appetizerId: parseInt(order.appetizerId),
@@ -25,7 +26,7 @@ export const OrderForm = () => {
             dessertId: parseInt(order.dessertId),
             drinkId: parseInt(order.drinkId),
             userId: parseInt(localStorage.getItem("pub_user")),
-            dateOrdered: Date.now()
+            dateOrdered: date.toDateString()
 
         }
         if (newOrder.locationId === 0) {
