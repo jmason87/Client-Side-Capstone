@@ -61,6 +61,15 @@ export const Reviews = () => {
             })
     }
 
+    const deleteReview = (id) => {
+        fetch(`http://localhost:8088/reviews/${id}`, {
+            method: "DELETE"
+        })
+        .then ((data) => {
+            updateReviews(data)
+        })
+    }
+
     return (
         <>
             <h1>Reviews</h1>
@@ -101,9 +110,17 @@ export const Reviews = () => {
             {
                 reviewsForList.map(
                     (reviewListObj) => {
-                        return <div>
-                            {reviewListObj.post}
-                        </div>
+                        if (reviewListObj.userId === parseInt(localStorage.getItem("pub_user"))) {
+                            return <div>
+                                {reviewListObj.post}
+                                <button onClick={() => {
+                                    deleteReview(reviewListObj.id)
+                                }
+                                }>Delete</button>
+                            </div>
+                        } else {
+                            return <div>{reviewListObj.post}</div>
+                        }
                     }
                 )
             }
