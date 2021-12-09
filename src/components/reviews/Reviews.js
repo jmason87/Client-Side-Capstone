@@ -70,6 +70,29 @@ export const Reviews = () => {
         })
     }
 
+    const editReview = (id) => {
+        const editedReviewObj = {
+            locationId: parseInt(review.locationId),
+            userId: parseInt(localStorage.getItem("pub_user")),
+            post: review.post
+        }
+        return fetch(`http://localhost:8088/reviews/${id}`, {
+            method: "PUT",
+            headers: {
+                "content-Type": "application/json"
+            },
+            body: JSON.stringify(editedReviewObj)
+        })
+        .then ((data) => {
+            updateReviews(data)
+        })
+        .then(() => {
+            document.getElementById("reviewForm").reset()
+        })
+
+
+    }
+
     return (
         <>
             <h1>Reviews</h1>
@@ -117,6 +140,7 @@ export const Reviews = () => {
                                     deleteReview(reviewListObj.id)
                                 }
                                 }>Delete</button>
+                                <button onClick={() => {editReview(reviewListObj.id)}}>Edit</button>
                             </div>
                         } else {
                             return <div>{reviewListObj.post}</div>
