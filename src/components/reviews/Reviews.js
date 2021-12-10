@@ -84,6 +84,10 @@ export const Reviews = () => {
     }
 
     const editReview = (id) => {
+        const blankForm = {
+            locationId: 0,
+            post: ""
+        }
         const editedReviewObj = {
             locationId: parseInt(review.locationId),
             userId: parseInt(localStorage.getItem("pub_user")),
@@ -109,6 +113,11 @@ export const Reviews = () => {
         .then(() => {
             document.getElementById("reviewForm").reset()
         })
+        .then(() => {
+            setReview(blankForm)
+        })
+
+
 
 
     }}
