@@ -37,11 +37,21 @@ export const Reviews = () => {
 
     const submitNewReview = () => {
         //e.preventDefault()
+        const blankForm = {
+            locationId: 0,
+            post: ""
+            }
         const newReview = {
             locationId: parseInt(review.locationId),
             userId: parseInt(localStorage.getItem("pub_user")),
             post: review.post
         }
+
+        if (newReview.locationId === 0) {
+            window.alert("Please select a location")
+        } else  if (newReview.post === "") {
+            window.alert("Please fill out the review form")
+        } else {
 
         const fetchOption = {
             method: "POST",
@@ -59,7 +69,10 @@ export const Reviews = () => {
             .then(() => {
                 document.getElementById("reviewForm").reset()
             })
-    }
+            .then(() => {
+                setReview(blankForm)
+            })
+    }}
 
     const deleteReview = (id) => {
         fetch(`http://localhost:8088/reviews/${id}`, {
@@ -76,6 +89,13 @@ export const Reviews = () => {
             userId: parseInt(localStorage.getItem("pub_user")),
             post: review.post
         }
+
+        if (editedReviewObj.locationId === 0) {
+            window.alert("Please select a location")
+        } else if (editedReviewObj.post === "") {
+            window.alert ("Please edit your review")
+        } else {
+
         return fetch(`http://localhost:8088/reviews/${id}`, {
             method: "PUT",
             headers: {
@@ -91,7 +111,7 @@ export const Reviews = () => {
         })
 
 
-    }
+    }}
 
     return (
         <>
@@ -140,7 +160,10 @@ export const Reviews = () => {
                                     deleteReview(reviewListObj.id)
                                 }
                                 }>Delete</button>
-                                <button onClick={() => {editReview(reviewListObj.id)}}>Edit</button>
+                                <button onClick={() => {
+                                    editReview(reviewListObj.id)
+                                }
+                                }>Edit</button>
                             </div>
                         } else {
                             return <div>{reviewListObj.post}</div>
