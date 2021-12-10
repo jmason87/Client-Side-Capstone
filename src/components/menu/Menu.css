@@ -1,0 +1,28 @@
+h1, h2 {
+    text-align: center;
+}
+
+.orderButton {
+    text-align: center;
+}
+
+.menu__items {
+    
+    text-align: center;
+    border: solid black 2px;
+    padding: 10px;
+    margin: 10px;
+    width: 25%;
+}
+
+.menuSections {
+    border: solid black 2px;
+    margin-top: 10px;
+
+}
+
+.display__items {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}

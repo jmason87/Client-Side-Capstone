@@ -18,13 +18,25 @@ export const Desserts = () => {
 
     return (
         <>
-            {
-                slicedDesserts.map(
-                    (dessert) => {
-                        return <p key={`dessert--${dessert.id}`}>{dessert.name}</p>
-                    }
-                )
-            }            
+            <div className="display__items">
+                {
+                    slicedDesserts.map(
+                        (dessert) => {
+                            return <section key={`dessert--${dessert.id}`} className="menu__items">
+                            <div>
+                                {dessert.name}
+                            </div>
+                            <div>
+                                {dessert.description}
+                            </div>
+                            <div>
+                                {dessert.price}
+                            </div>
+                        </section>
+                        }
+                    )
+                }
+            </div>
         </>
     )
 }
