@@ -1,0 +1,20 @@
+.Loc1 {
+    
+    text-align: center;
+    border: solid black 2px;
+    padding: 10px;
+    margin: 10px;
+    width: 25%;
+}
+
+.Loc {
+    justify-content: center;
+    display: flex;
+   flex-wrap: wrap;
+   
+    
+}
+
+h1 {
+    text-align: center;
+}

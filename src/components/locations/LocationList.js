@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
+import "./Locations.css"
 
 
 export const LocationList = () => {
@@ -18,13 +19,29 @@ export const LocationList = () => {
 
     return (
         <>
+            <h1>Locations</h1>
+            <div className="Loc">
+            
             {
+                
                 locations.map(
                     (location) => {
-                        return <p key={`location--${location.id}`}>{location.neighborhood}</p>
+                        return <section key={`location--${location.id}`}className="Loc1" >                 
+                                    <div>
+                                        {location.neighborhood}
+                                    </div>
+                                    <div>
+                                        Address: {location.address}     
+                                    </div>
+                                    <div>
+                                        Phone: {location.phone}
+                                    </div>
+                                </section>
+                    
                     }
                 )
             }
+            </div>
         </>
     )
 }
