@@ -18,13 +18,25 @@ export const Drinks = () => {
 
     return (
         <>
+        <div className="display__items">
             {
                 slicedDrinks.map(
                     (drink) => {
-                        return <p key={`drink--${drink.id}`}>{drink.name}</p>
+                        return <section key={`drink--${drink.id}`} className="menu__items">
+                        <div>
+                            {drink.name}
+                        </div>
+                        <div>
+                            {drink.description}
+                        </div>
+                        <div>
+                            {drink.price}
+                        </div>
+                    </section>
                     }
                 )
             }
+            </div>
         </>
     )
 }

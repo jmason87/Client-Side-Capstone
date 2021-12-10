@@ -18,13 +18,25 @@ export const Entrees = () => {
 
     return (
         <>
-            {
-                slicedEntrees.map(
-                    (entree) => {
-                        return <p key={`entree--${entree.id}`}>{entree.name}</p>
-                    }
-                )
-            }
+            <div className="display__items">
+                {
+                    slicedEntrees.map(
+                        (entree) => {
+                            return <section key={`entree--${entree.id}`} className="menu__items">
+                                <div>
+                                    {entree.name}
+                                </div>
+                                <div>
+                                    {entree.description}
+                                </div>
+                                <div>
+                                    {entree.price}
+                                </div>
+                            </section>
+                        }
+                    )
+                }
+            </div>
         </>
     )
 }

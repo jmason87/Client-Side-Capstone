@@ -1,10 +1,11 @@
 import React from "react"
 import { useState, useEffect } from "react"
+import "./Menu.css"
 
 export const Appetizers = () => {
     const [appetizers, setApps] = useState([])
     const slicedApps = appetizers.slice(1)
-    
+
 
     useEffect(
         () => {
@@ -21,15 +22,26 @@ export const Appetizers = () => {
 
     return (
         <>
-            
-            {
-                
-                slicedApps.map(
-                    (app) => {
-                        return <p key={`app--${app.id}`}>{app.name}</p>
-                    }
-                )
-            }
+            <div className="display__items">
+                {
+
+                    slicedApps.map(
+                        (app) => {
+                            return <section key={`app--${app.id}`} className="menu__items">
+                                <div>
+                                    {app.name}
+                                </div>
+                                <div>
+                                    {app.description}
+                                </div>
+                                <div>
+                                    {app.price}
+                                </div>
+                            </section>
+                        }
+                    )
+                }
+            </div>
         </>
-    )        
+    )
 }
