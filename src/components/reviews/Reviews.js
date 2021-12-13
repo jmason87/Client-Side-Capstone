@@ -128,6 +128,7 @@ export const Reviews = () => {
         <>
             <h1>Reviews</h1>
             <form id="reviewForm" className="review__Form">
+                <div className="form">
                 <select
                     onChange={
                         (evt) => {
@@ -157,6 +158,7 @@ export const Reviews = () => {
                         } />
                 </div>
                 <button onClick={submitNewReview}>Submit</button>
+                </div>
             </form>
 
 

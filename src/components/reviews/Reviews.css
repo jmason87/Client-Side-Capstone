@@ -12,5 +12,16 @@
 
 .review__Form {
     border: solid black 2px;
-    padding: 10px 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 50%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+
+    
+}
+
+.form {
+    display: inline-block;
 }
