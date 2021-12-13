@@ -1,6 +1,6 @@
-import { render } from "@testing-library/react"
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router"
+import "./Reviews.css"
+
 
 export const Reviews = () => {
     const [locations, setLocations] = useState([])
@@ -10,7 +10,7 @@ export const Reviews = () => {
         locationId: 0,
         post: ""
     })
-    const history = useHistory()
+
 
     useEffect(
         () => {
@@ -25,7 +25,7 @@ export const Reviews = () => {
 
     useEffect(
         () => {
-            fetch("http://localhost:8088/reviews")
+            fetch("http://localhost:8088/reviews?_expand=user&_expand=location")
                 .then(res => res.json())
                 .then((data) => {
                     setReviewsForList(data)
@@ -40,7 +40,7 @@ export const Reviews = () => {
         const blankForm = {
             locationId: 0,
             post: ""
-            }
+        }
         const newReview = {
             locationId: parseInt(review.locationId),
             userId: parseInt(localStorage.getItem("pub_user")),
@@ -49,38 +49,39 @@ export const Reviews = () => {
 
         if (newReview.locationId === 0) {
             window.alert("Please select a location")
-        } else  if (newReview.post === "") {
+        } else if (newReview.post === "") {
             window.alert("Please fill out the review form")
         } else {
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "content-Type": "application/json"
-            },
-            body: JSON.stringify(newReview)
-        }
+            const fetchOption = {
+                method: "POST",
+                headers: {
+                    "content-Type": "application/json"
+                },
+                body: JSON.stringify(newReview)
+            }
 
-        return fetch("http://localhost:8088/reviews", fetchOption)
-            .then(res => res.json())
-            .then((data) => {
-                updateReviews(data)
-            })
-            .then(() => {
-                document.getElementById("reviewForm").reset()
-            })
-            .then(() => {
-                setReview(blankForm)
-            })
-    }}
+            return fetch("http://localhost:8088/reviews", fetchOption)
+                .then(res => res.json())
+                .then((data) => {
+                    updateReviews(data)
+                })
+                .then(() => {
+                    document.getElementById("reviewForm").reset()
+                })
+                .then(() => {
+                    setReview(blankForm)
+                })
+        }
+    }
 
     const deleteReview = (id) => {
         fetch(`http://localhost:8088/reviews/${id}`, {
             method: "DELETE"
         })
-        .then ((data) => {
-            updateReviews(data)
-        })
+            .then((data) => {
+                updateReviews(data)
+            })
     }
 
     const editReview = (id) => {
@@ -97,30 +98,31 @@ export const Reviews = () => {
         if (editedReviewObj.locationId === 0) {
             window.alert("Please select a location")
         } else if (editedReviewObj.post === "") {
-            window.alert ("Please edit your review")
+            window.alert("Please edit your review")
         } else {
 
-        return fetch(`http://localhost:8088/reviews/${id}`, {
-            method: "PUT",
-            headers: {
-                "content-Type": "application/json"
-            },
-            body: JSON.stringify(editedReviewObj)
-        })
-        .then ((data) => {
-            updateReviews(data)
-        })
-        .then(() => {
-            document.getElementById("reviewForm").reset()
-        })
-        .then(() => {
-            setReview(blankForm)
-        })
+            return fetch(`http://localhost:8088/reviews/${id}`, {
+                method: "PUT",
+                headers: {
+                    "content-Type": "application/json"
+                },
+                body: JSON.stringify(editedReviewObj)
+            })
+                .then((data) => {
+                    updateReviews(data)
+                })
+                .then(() => {
+                    document.getElementById("reviewForm").reset()
+                })
+                .then(() => {
+                    setReview(blankForm)
+                })
 
 
 
 
-    }}
+        }
+    }
 
     return (
         <>
@@ -134,7 +136,7 @@ export const Reviews = () => {
                             setReview(copy)
                         }
                     }>
-                    <option value="" >Select a Location</option>
+                    <option value={0}>Select a Location</option>
                     {
                         locations.map(location => {
                             return <option key={location.id} value={location.id}>{location.neighborhood}</option>
@@ -163,8 +165,16 @@ export const Reviews = () => {
                 reviewsForList.map(
                     (reviewListObj) => {
                         if (reviewListObj.userId === parseInt(localStorage.getItem("pub_user"))) {
-                            return <div>
-                                {reviewListObj.post}
+                            return <div key={reviewListObj.id} className="review">
+                                <div>
+                                    Location: {reviewListObj.location.neighborhood}
+                                </div>
+                                <div className="review__post">
+                                    {reviewListObj.post}
+                                </div>
+                                <div>
+                                    Submitted by: {reviewListObj.user.name}
+                                </div>
                                 <button onClick={() => {
                                     deleteReview(reviewListObj.id)
                                 }
@@ -175,7 +185,17 @@ export const Reviews = () => {
                                 }>Edit</button>
                             </div>
                         } else {
-                            return <div>{reviewListObj.post}</div>
+                            return <div key={reviewListObj.id} className="review">
+                                <div>
+                                    Location: {reviewListObj.location.neighborhood}
+                                </div>
+                                <div className="review__post">
+                                    {reviewListObj.post} 
+                                </div>
+                                <div>
+                                    Submitted by: {reviewListObj.user.name}
+                                </div>
+                            </div>
                         }
                     }
                 )

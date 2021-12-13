@@ -56,7 +56,7 @@ export const OrderForm = () => {
         return fetch("http://localhost:8088/orders", fetchOption)
             .then(res => res.json())
             .then(() => {
-                history.push("/menu")
+                history.push("/orders")
             })
     }}
 
