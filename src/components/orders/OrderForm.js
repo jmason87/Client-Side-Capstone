@@ -127,7 +127,7 @@ export const OrderForm = () => {
                         setOrder(copy)
                     }
                 }>
-                <option value="" >Select a Location</option>
+                <option value={0} >Select a Location</option>
                 {
                     locations.map(location => {
                         return <option key={location.id} value={location.id}>{location.neighborhood}</option>
