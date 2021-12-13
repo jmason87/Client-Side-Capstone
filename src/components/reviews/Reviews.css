@@ -9,3 +9,8 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.review__Form {
+    border: solid black 2px;
+    padding: 10px 0px;
+}
