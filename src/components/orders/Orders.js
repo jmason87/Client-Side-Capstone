@@ -9,7 +9,7 @@ export const Orders = () => {
     
     useEffect(
         () => {
-            fetch(`http://localhost:8088/orders?_expand=appetizer&_expand=entree&_expand=dessert&_expand=drink&userId=${user}`)
+            fetch(`http://localhost:8088/orders?_expand=appetizer&_expand=entree&_expand=dessert&_expand=drink&_expand=location&userId=${user}`)
             .then(res => res.json())
             .then((data) => {
                 setOrders(data)
@@ -26,7 +26,7 @@ export const Orders = () => {
             orders.map((order) => {
                 
                  return <div key={`order--${order.id}`}>
-                     <p>Order #{order.id} placed on {order.dateOrdered}:</p>
+                     <p>Order #{order.id} placed at the {order.location.neighborhood} location on {order.dateOrdered}:</p>
                      <ul>
                          <li>{order.appetizer.name}</li>
                          <li>{order.entree.name}</li>
