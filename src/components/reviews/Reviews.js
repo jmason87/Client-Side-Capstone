@@ -130,6 +130,7 @@ export const Reviews = () => {
             <form id="reviewForm" className="review__Form">
                 <div className="form">
                 <select
+                    className="box"
                     onChange={
                         (evt) => {
                             const copy = { ...review }
@@ -146,8 +147,9 @@ export const Reviews = () => {
                 </select>
 
                 <div>
-                    <input
+                    <textarea
                         type="text"
+                        className="textbox"
                         placeholder="Leave a Review"
                         onChange={
                             (evt) => {
@@ -157,7 +159,7 @@ export const Reviews = () => {
                             }
                         } />
                 </div>
-                <button onClick={submitNewReview}>Submit</button>
+                <button className="submitButton" onClick={submitNewReview}>Submit</button>
                 </div>
             </form>
 
@@ -177,11 +179,11 @@ export const Reviews = () => {
                                 <div>
                                     Submitted by: {reviewListObj.user.name}
                                 </div>
-                                <button onClick={() => {
+                                <button className="postButton" onClick={() => {
                                     deleteReview(reviewListObj.id)
                                 }
                                 }>Delete</button>
-                                <button onClick={() => {
+                                <button className="postButton" onClick={() => {
                                     editReview(reviewListObj.id)
                                 }
                                 }>Edit</button>

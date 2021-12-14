@@ -5,6 +5,9 @@
     padding: 10px;
     margin: 10px;
     width: 25%;
+    box-shadow: 0 4px 8px 0 black;
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
 .Loc {

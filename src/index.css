@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body {
+  background: rgba(30, 31, 30, 0.1);
+  }
+  
+  h1 {
+      font-family: copperplate;
+  }

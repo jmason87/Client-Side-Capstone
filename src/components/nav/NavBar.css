@@ -2,9 +2,26 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-image: linear-gradient(to right, #f0452d 0%, #f26c2d 100%);
+    background-color: #f68b1f;
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    padding: 9px 17px;
+    text-decoration: none;
+    font-weight: bold;
 }
+
+a {
+    color: white;
+    text-decoration: none
+}
+
+
