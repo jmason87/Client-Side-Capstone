@@ -15,7 +15,7 @@ export const NavBar = (props) => {
             })
       
         },
-        []
+        [userId]
     )
 
     return (

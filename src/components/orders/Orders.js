@@ -15,7 +15,7 @@ export const Orders = () => {
                 setOrders(data)
             })
         },
-        []
+        [user]
     )
     
     
