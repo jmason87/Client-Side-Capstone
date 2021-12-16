@@ -1,13 +1,24 @@
 .review {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border: solid gray 2px;
-    padding: 5px;
+    
+    padding: 10px;
+    margin: 10px;
+    
+    box-shadow: 0 4px 8px 0 #5970d3;
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
 .review__post {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: solid black 1px;
+    width: 40%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 5px;
 }
 
 .review__Form {
@@ -65,18 +76,19 @@
     height: 200px;
     width: 600px;
     margin: 10px;
+    
 }
 
 .box {
     width: 200px;
     height: 30px;
-    border: 2px solid #5970d3;
+    border: 1px solid black;
     font-size: 18px;
-    color: #5970d3;
-    background-color: #eee;
+    color: white;
+    background-color: #5970d3;
     border-radius: 5px;
     box-shadow: 4px 4px #ccc;
     margin-bottom: 20px;
-    font-weight: bold;
+    
 }
 

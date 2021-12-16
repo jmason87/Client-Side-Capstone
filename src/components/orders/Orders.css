@@ -1,0 +1,15 @@
+.orderCards {
+    
+    
+    padding: 10px;
+    margin: 10px;
+    width: 47%;
+    box-shadow: 0 4px 8px 0 #5970d3;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.orders {
+    
+    display: flex;
+    flex-wrap: wrap;
+}

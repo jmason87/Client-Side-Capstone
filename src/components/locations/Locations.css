@@ -1,11 +1,11 @@
 .Loc1 {
     
     text-align: center;
-    border: solid black 2px;
+    
     padding: 10px;
     margin: 10px;
     width: 25%;
-    box-shadow: 0 4px 8px 0 black;
+    box-shadow: 0 4px 8px 0 #5970d3;
     transition: 0.3s;
     border-radius: 5px;
 }

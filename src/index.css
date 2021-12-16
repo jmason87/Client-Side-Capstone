@@ -13,9 +13,11 @@ code {
 }
 
 body {
-  background: rgba(30, 31, 30, 0.1);
+  background: #cececf;
   }
   
   h1 {
       font-family: copperplate;
+      font-weight: bolder;
   }
+
