@@ -39,10 +39,13 @@ fieldset {
     border-radius: .25rem;
     -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-left: 5px;
+    box-shadow: 0 4px 8px 0 #5970d3;
 }
 
 .container--login {
     text-align: center;
+    
 }
 
 .form--login {
@@ -63,5 +66,59 @@ fieldset {
 .dialog {
     min-width: 15rem;
     min-height: 5rem;
+}
+
+.login--button {
+    display: inline-block;
+    background-color: #f68b1f;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 28px;
+    padding: 10px;
+    width: 200px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    background-image: linear-gradient(to right, #f0452d 0%, #f26c2d 100%)
+
+}
+
+#link--register {
+    background-image: linear-gradient(to right, #f0452d 0%, #f26c2d 100%);
+    width:fit-content;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+}
+
+.register--button {
+    display: inline-block;
+    background-color: #f68b1f;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px;
+    width: 150px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    background-image: linear-gradient(to right, #f0452d 0%, #f26c2d 100%)
+
 }
 

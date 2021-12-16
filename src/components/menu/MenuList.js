@@ -10,8 +10,8 @@ export const MenuList = () => {
     return (
         <>
             <h1>Menu</h1>
-            <div className="orderButton">
-                <Link to="/placeOrder"><button>Place Order</button></Link>
+            <div className="display__items">
+                <Link to="/placeOrder"><button className="orderButton">Place Order</button></Link>
             </div>
 
             <div className="menuSections">
