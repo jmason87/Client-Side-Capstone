@@ -13,3 +13,49 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.menu--choices {
+    display: flex;
+    
+    justify-content: center;
+    text-align: center;
+    
+    padding: 10px;
+    margin: 10px;
+    margin-left: 400px;
+    margin-right: 400px;
+    box-shadow: 0 4px 8px 0 #5970d3;
+    transition: 0.3s;
+    border-radius: 5px;
+    
+    
+}
+
+.menu--choice {
+    padding: 20px;
+}
+
+.order--select {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    font-size: 18px;
+    color: white;
+    background-color: #5970d3;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+    margin-bottom: 20px;
+    
+    
+}
+
+.select--loc {
+    display: flex;
+    justify-content: center;
+}
+
+.button--center {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

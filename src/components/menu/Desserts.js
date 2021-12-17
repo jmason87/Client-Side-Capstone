@@ -24,13 +24,13 @@ export const Desserts = () => {
                         (dessert) => {
                             return <section key={`dessert--${dessert.id}`} className="menu__items">
                             <div>
-                                {dessert.name}
+                                <b>{dessert.name}</b>
                             </div>
                             <div>
-                                {dessert.description}
+                                <em>{dessert.description}</em>
                             </div>
                             <div>
-                                {dessert.price}
+                                ${dessert.price}
                             </div>
                         </section>
                         }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
+import "./Orders.css"
 
 export const OrderForm = () => {
     const [appetizers, setApps] = useState([])
@@ -32,33 +33,34 @@ export const OrderForm = () => {
         if (newOrder.locationId === 0) {
             window.alert("Please select a location")
         } else
-        if (newOrder.appetizerId === 0) {
-            window.alert("Please select an appetizer")
-        } else
-        if (newOrder.entreeId === 0) {
-            window.alert("Please select an entree")
-        } else
-        if (newOrder.dessertId === 0) {
-            window.alert("Please select an dessert")
-        } else
-        if (newOrder.drinkId === 0) {
-            window.alert("Please select an drink")
-        } else {
+            if (newOrder.appetizerId === 0) {
+                window.alert("Please select an appetizer")
+            } else
+                if (newOrder.entreeId === 0) {
+                    window.alert("Please select an entree")
+                } else
+                    if (newOrder.dessertId === 0) {
+                        window.alert("Please select an dessert")
+                    } else
+                        if (newOrder.drinkId === 0) {
+                            window.alert("Please select an drink")
+                        } else {
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "content-Type": "application/json"
-            },
-            body: JSON.stringify(newOrder)
-        }
+                            const fetchOption = {
+                                method: "POST",
+                                headers: {
+                                    "content-Type": "application/json"
+                                },
+                                body: JSON.stringify(newOrder)
+                            }
 
-        return fetch("http://localhost:8088/orders", fetchOption)
-            .then(res => res.json())
-            .then(() => {
-                history.push("/orders")
-            })
-    }}
+                            return fetch("http://localhost:8088/orders", fetchOption)
+                                .then(res => res.json())
+                                .then(() => {
+                                    history.push("/orders")
+                                })
+                        }
+    }
 
     useEffect(
         () => {
@@ -119,105 +121,125 @@ export const OrderForm = () => {
         <>
             <h1>Place an Order</h1>
             <h2>Location</h2>
-            <select
-                onChange={
-                    (evt) => {
-                        const copy = { ...order }
-                        copy.locationId = evt.target.value
-                        setOrder(copy)
+            <div className="select--loc">
+                <select
+                    className="order--select"
+                    onChange={
+                        (evt) => {
+                            const copy = { ...order }
+                            copy.locationId = evt.target.value
+                            setOrder(copy)
+                        }
+                    }>
+                    <option value={0} >Select a Location</option>
+                    {
+                        locations.map(location => {
+                            return <option key={location.id} value={location.id}>{location.neighborhood}</option>
+                        })
                     }
-                }>
-                <option value={0} >Select a Location</option>
-                {
-                    locations.map(location => {
-                        return <option key={location.id} value={location.id}>{location.neighborhood}</option>
-                    })
-                }
-            </select>
+                </select>
+            </div>
 
             <h2>Appetizers</h2>
-            {
-                appetizers.map(
-                    (app) => {
-                        return <p key={`app--${app.id}`}>
-                            <input
-                                type="radio"
-                                name="app"
-                                value={app.id}
-                                onChange={
-                                    (evt) => {
-                                        const copy = { ...order }
-                                        copy.appetizerId = evt.target.value
-                                        setOrder(copy)
-                                    }
-                                } />{app.name}</p>
-                    }
-                )
-            }
+            <div className="menu--choices">
+                {
+                    appetizers.map(
+                        (app) => {
+                            return <div className="menu--choice">
+                                <p key={`app--${app.id}`}>
+                                    <input
+                                        type="radio"
+                                        name="app"
+                                        value={app.id}
+                                        onChange={
+                                            (evt) => {
+                                                const copy = { ...order }
+                                                copy.appetizerId = evt.target.value
+                                                setOrder(copy)
+                                            }
+                                        } />{app.name}</p>
+                            </div>
+                        }
+                    )
+                }
+            </div>
 
             <h2>Entrees</h2>
-            {
-                entrees.map(
-                    (entree) => {
-                        return <p key={`entree--${entree.id}`}>
-                            <input
-                                type="radio"
-                                name="entree"
-                                value={entree.id}
-                                onChange={
-                                    (evt) => {
-                                        const copy = { ...order }
-                                        copy.entreeId = evt.target.value
-                                        setOrder(copy)
+            <div className="menu--choices">
+                {
+                    entrees.map(
+                        (entree) => {
+                            return <div className="menu--choice">
+                                <p key={`entree--${entree.id}`}>
+                                    <input
+                                        type="radio"
+                                        name="entree"
+                                        value={entree.id}
+                                        onChange={
+                                            (evt) => {
+                                                const copy = { ...order }
+                                                copy.entreeId = evt.target.value
+                                                setOrder(copy)
 
-                                    }
-                                } />{entree.name}</p>
-                    }
-                )
-            }
-
+                                            }
+                                        } />{entree.name}</p>
+                                    </div>
+                        }
+                    )
+                }
+            </div>
 
             <h2>Desserts</h2>
-            {
-                desserts.map(
-                    (dessert) => {
-                        return <p key={`dessert--${dessert.id}`}>
-                            <input
-                                type="radio"
-                                name="dessert"
-                                value={dessert.id}
-                                onChange={
-                                    (evt) => {
-                                        const copy = { ...order }
-                                        copy.dessertId = evt.target.value
-                                        setOrder(copy)
-                                    }
-                                } />{dessert.name}</p>
-                    }
-                )
-            }
+            <div className="menu--choices">
+                {
+                    desserts.map(
+                        (dessert) => {
+                            return <div className="menu--choice">
+                                <p key={`dessert--${dessert.id}`}>
+                                    <input
+                                        type="radio"
+                                        name="dessert"
+                                        value={dessert.id}
+                                        onChange={
+                                            (evt) => {
+                                                const copy = { ...order }
+                                                copy.dessertId = evt.target.value
+                                                setOrder(copy)
+                                            }
+                                        } />{dessert.name}</p>
+                            </div>
+                        }
+                    )
+                }
+            </div>
 
             <h2>Drinks</h2>
-            {
-                drinks.map(
-                    (drink) => {
-                        return <p key={`drink--${drink.id}`}>
-                            <input
-                                type="radio"
-                                name="drink"
-                                value={drink.id}
-                                onChange={
-                                    (evt) => {
-                                        const copy = { ...order }
-                                        copy.drinkId = evt.target.value
-                                        setOrder(copy)
-                                    }
-                                } />{drink.name}</p>
-                    }
-                )
-            }
+            <div className="menu--choices">
+                {
+                    drinks.map(
+                        (drink) => {
+                            return <div className="menu--choice">
+                                <p key={`drink--${drink.id}`}>
+                                    <input
+                                        type="radio"
+                                        name="drink"
+                                        value={drink.id}
+                                        onChange={
+                                            (evt) => {
+                                                const copy = { ...order }
+                                                copy.drinkId = evt.target.value
+                                                setOrder(copy)
+                                            }
+                                        } />{drink.name}</p>
+                            </div>
+                        }
+                    )
+                }
+            </div>
             
-            <button onClick={submitNewOrder}>Submit Order</button>
+            <div className="button--center">
+                <button className="orderButton"onClick={submitNewOrder}>Submit Order</button>
+            </div>
         </>
     )
 }

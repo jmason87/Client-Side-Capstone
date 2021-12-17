@@ -29,13 +29,13 @@ export const Appetizers = () => {
                         (app) => {
                             return <section key={`app--${app.id}`} className="menu__items">
                                 <div>
-                                    {app.name}
+                                    <b>{app.name}</b>
                                 </div>
                                 <div>
-                                    {app.description}
+                                    <em>{app.description}</em>
                                 </div>
                                 <div>
-                                    {app.price}
+                                    ${app.price}
                                 </div>
                             </section>
                         }
