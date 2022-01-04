@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css"
 
+
 export const NavBar = (props) => {
     const [users, setUsers] =useState([])
     const userId = localStorage.getItem("pub_user")
+    
+    const [test, settest] = useState([])
 
     useEffect(
         () => {
@@ -16,6 +19,17 @@ export const NavBar = (props) => {
       
         },
         [userId]
+    )
+
+    useEffect(
+        () => {
+            fetch("http://localhost:8088/entrees")
+                .then(res => res.json())
+                .then((data) => {
+                    settest(data)
+                })
+        },
+        []
     )
 
     return (
@@ -34,7 +48,7 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/orders">Orders</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/reviews">Reviews</Link>
+                <Link className="navbar__link" to="/reviews/{${createdId}">Reviews</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="#"
